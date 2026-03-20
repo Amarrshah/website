@@ -45,18 +45,17 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.product-card, .why-card, .testimonial-card, .about-grid, .contact-detail-item').forEach(el => {
+document.querySelectorAll('.product-card, .testimonial-card, .why-item, .contact-detail').forEach(el => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(28px)';
-  el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   revealObserver.observe(el);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Short delay so initial page paint completes
   setTimeout(() => {
-    document.querySelectorAll('.product-card, .why-card, .testimonial-card, .about-grid, .contact-detail-item').forEach((el, i) => {
-      el.style.transitionDelay = `${i * 0.07}s`;
+    document.querySelectorAll('.product-card, .testimonial-card, .why-item, .contact-detail').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.06}s`;
     });
   }, 100);
 });
@@ -86,9 +85,8 @@ if (contactForm) {
       if (response.ok) {
         contactForm.innerHTML = `
           <div style="text-align:center;padding:3rem 2rem;">
-            <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
-            <h3 style="color:var(--navy);margin-bottom:0.5rem;">Message Sent!</h3>
-            <p>We'll get back to you within 24 hours.<br>Or reach us directly on WhatsApp.</p>
+            <h3 style="color:#1a2b4a;font-family:Raleway,sans-serif;font-weight:700;letter-spacing:0.04em;margin-bottom:0.75rem;">Message Sent</h3>
+            <p style="font-family:Raleway,sans-serif;font-weight:300;color:#7a7570;">We'll get back to you within 24 hours.<br>Or reach us directly on WhatsApp.</p>
           </div>`;
       } else {
         throw new Error('Failed');
