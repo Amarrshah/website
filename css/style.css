@@ -516,62 +516,113 @@ h1, h2, h3, h4 {
 .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
 /* =============================================
-   FOOTER
+   FOOTER  — horizontal 3-column
    ============================================= */
 .site-footer {
   background: var(--navy);
   padding: 4rem 0 2rem;
-  text-align: center;
   border-top: 3px solid var(--cream-dark);
 }
-.footer-brand-name {
-  font-size: 0.8rem;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr;
+  gap: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 1.75rem;
+}
+.footer-col-label {
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  display: block;
+  margin-bottom: 1.1rem;
+}
+.footer-brand-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--white);
   display: block;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.25rem;
 }
 .footer-brand-sub {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 400;
-  letter-spacing: 0.14em;
-  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.28);
   display: block;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 .footer-address {
   font-size: 0.82rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.9;
-  margin-bottom: 0.5rem;
+  color: rgba(255,255,255,0.42);
+  line-height: 1.85;
 }
 .footer-phone {
-  font-size: 0.92rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--cream);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   display: block;
   margin-bottom: 0.4rem;
+  transition: opacity var(--transition);
 }
-.footer-hours {
-  font-size: 0.78rem;
+.footer-phone:hover { opacity: 0.7; }
+.footer-email {
+  font-size: 0.8rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.45);
   display: block;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.75rem;
+  transition: color var(--transition);
 }
+.footer-email:hover { color: var(--cream); }
+.footer-hours {
+  font-size: 0.76rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.04em;
+  display: block;
+}
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.footer-nav-col a {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.03em;
+  transition: color var(--transition);
+}
+.footer-nav-col a:hover { color: var(--cream); }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.66rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+}
+
+/* legacy centred footer — keep for fallback */
 .footer-nav {
   display: flex;
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  margin-bottom: 2rem;
 }
 .footer-nav a {
   font-size: 0.7rem;
@@ -582,12 +633,13 @@ h1, h2, h3, h4 {
   transition: color var(--transition);
 }
 .footer-nav a:hover { color: var(--cream); }
-.footer-copy {
-  font-size: 0.68rem;
-  font-weight: 300;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.2);
+
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { justify-content: center; text-align: center; }
 }
 
 /* =============================================
@@ -660,7 +712,8 @@ h1, h2, h3, h4 {
   background: var(--border);
   border: 1.5px solid var(--border);
 }
-.gallery-item.ph { height: 240px; }
+.gallery-item.ph,
+.gallery-grid .ph { height: 240px; }
 
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
 
